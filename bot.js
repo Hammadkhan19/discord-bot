@@ -2,6 +2,8 @@
 import { Client, GatewayIntentBits } from "discord.js";
 import axios from "axios";
 import dotenv from "dotenv";
+const express = require("express");
+const app = express();
 
 dotenv.config();
 
@@ -51,3 +53,8 @@ client.on("messageCreate", async (message) => {
 });
 
 client.login(process.env.DISCORD_TOKEN);
+
+
+app.get("/", (req, res) => res.send("Bot is alive!"));
+
+app.listen(3000, () => console.log("Keep-alive server running on Railway!"));
